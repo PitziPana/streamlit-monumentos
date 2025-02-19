@@ -4,7 +4,7 @@ import folium
 from streamlit_folium import st_folium
 
 # Cargar los datos
-file_path = "/Volumes/JAVITXU/streamlit_monumentos/monumentos_actualizados.csv"
+file_path = "monumentos_actualizados.csv"
 df = pd.read_csv(file_path)
 
 # Eliminar filas con coordenadas vacías
