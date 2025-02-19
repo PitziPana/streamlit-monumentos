@@ -1,0 +1,50 @@
+import streamlit as st
+import pandas as pd
+import folium
+from streamlit_folium import folium_static
+
+# Cargar los datos
+file_path = "monumentos_actualizados.csv"  # Ajusta la ruta si es necesario
+df = pd.read_csv(file_path)
+
+# Configuración de la app
+st.title("Mapa de Monumentos Altomedievales")
+st.markdown("### Consulta los monumentos altomedievales de la península ibérica")
+
+# Crear el mapa
+mapa = folium.Map(location=[df["Latitud"].mean(), df["Longitud"].mean()], zoom_start=6)
+
+# Agregar los monumentos al mapa
+for _, row in df.iterrows():
+    folium.Marker(
+        location=[row["Latitud"], row["Longitud"]],
+        popup=f"<b>{row['Nombre']}</b><br><a href='{row['URL']}' target='_blank'>Ver más</a>",
+        tooltip=row["Nombre"],
+    ).add_to(mapa)
+
+# Mostrar el mapa en Streamlit
+folium_static(mapa)
+
+# Mostrar la tabla de monumentos con enlaces
+st.markdown("### Lista de Monumentos")
+df_display = df[["Nombre", "URL"]].copy()
+df_display["URL"] = df_display["URL"].apply(lambda x: f"[Ver más]({x})")
+st.write(df_display.to_markdown(index=False), unsafe_allow_html=True)
+X
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+XXX
+X
+
