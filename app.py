@@ -21,7 +21,7 @@ mapa = folium.Map(location=[df["Latitud"].mean(), df["Longitud"].mean()], zoom_s
 for _, row in df.iterrows():
     folium.CircleMarker(
         location=[row["Latitud"], row["Longitud"]],
-        radius=6,  
+        radius=10,  # Aumentado de 6 a 10
         color="darkred",
         fill=True,
         fill_color="red",
