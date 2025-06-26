@@ -7,7 +7,7 @@ from streamlit_folium import st_folium
 file_path = "monumentos_actualizados.csv"
 df = pd.read_csv(file_path)
 
-# Eliminar filas con coordenadas vacías
+# Elimina filas con coordenadas vacías
 df = df.dropna(subset=["Latitud", "Longitud"])
 
 # Configuración de la app
